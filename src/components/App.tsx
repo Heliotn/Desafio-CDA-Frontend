@@ -96,7 +96,12 @@ const App: React.FC = () => {
     const localData = localStorage.getItem('gameScores');
     return localData ? JSON.parse(localData) : [];
   });
-  const [attemptNumber, setAttemptNumber] = useState(0);
+
+  const [attemptNumber, setAttemptNumber] = useState<number>(() => {
+    const localData = localStorage.getItem('attemptNumber');
+    return localData ? parseInt(localData, 10) : 0;
+  });
+
   const [currentDifficulty, setCurrentDifficulty] = useState<DifficultyLevel>('medium');
   const [characters, setCharacters] = useState('');
   const [gameStarted, setGameStarted] = useState(false);
@@ -116,6 +121,10 @@ const App: React.FC = () => {
     localStorage.setItem('gameScores', JSON.stringify(gameScores));
   }, [gameScores]);
 
+  useEffect(() => {
+    localStorage.setItem('attemptNumber', attemptNumber.toString());
+  }, [attemptNumber]);
+
   const handleGameEnd = (result:GameScore) => {
     setGameScores(prevScores => [...prevScores, { attempt: result.attempt, score: result.score, sequency:result.sequency }]);
   };
@@ -123,14 +132,14 @@ const App: React.FC = () => {
   const startGame = () => {
     const result = generateCharacters(difficulties[currentDifficulty].numChars);
     setCharacters(result.characters);
-    setAttemptNumber(result.attempt);
+    setAttemptNumber(prev => prev + 1);
     setGameStarted(true);
   };
 
   const handleGenerateNewCharacters = () => {
     const result = generateCharacters(difficulties[currentDifficulty].numChars);
     setCharacters(result.characters);
-    setAttemptNumber(result.attempt);
+    setAttemptNumber(prev => prev + 1);
   };
 
   const handleClose = () => {
