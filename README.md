@@ -2,7 +2,7 @@
 
 ## Descrição
 
-O **Desafio Frontend Cidade Alta** é um Minigame dinâmico onde o jogador precisa seguir uma sequência de caracteres gerados aleatoriamente o mais rápido possível. O jogo desafia a rapidez e precisão do jogador, e qualquer erro ou o fim do tempo resulta em falha.
+O **Desafio Frontend Cidade Alta** é um Minigame onde o jogador precisa seguir uma sequência de caracteres gerados aleatoriamente o mais rápido possível. O jogo desafia a rapidez e precisão do jogador, e qualquer erro ou o fim do tempo resulta em falha.
 
 ## Tecnologias Utilizadas
 
@@ -12,7 +12,7 @@ O **Desafio Frontend Cidade Alta** é um Minigame dinâmico onde o jogador preci
 
 ## Features
 
-- **Níveis de Dificuldade**: O jogo possui três níveis de dificuldade (Fácil, Médio e Difícil), que determinam a rapidez com que os jogadores precisam responder.
+- **Níveis de Dificuldade**: O jogo possui três níveis de dificuldade (Fácil, Médio e Difícil), que determinam o tempo inicial e a quantidade de caracteres. Por padrão, todas as dificuldades estão configuradas com 6 caracteres, mas isso pode ser alterado no arquivo `App.tsx` dentro do objeto `difficulties`.
 - **Controles de Teclado**:
   - **Espaço**: Inicia ou reinicia o jogo.
   - **Esc**: Retorna à tela inicial e encerra o jogo atual.
@@ -43,7 +43,7 @@ pnpm i
 # Execute a aplicação em modo de desenvolvimento
 pnpm start
 
-# Buildar a aplicação para prod
+# Buildar a aplicação para produção
 pnpm build
 
-# O servidor inciará na porta:5173 - acesse <http://localhost:5173>
+# O servidor iniciará na porta:5173 - acesse <http://localhost:5173>
